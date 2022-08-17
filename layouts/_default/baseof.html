@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}" dir="rtl">
+  <head itemscope itemtype="{{ .Site.BaseURL }}">
+    {{- partial "meta.html" . -}} {{ partial "site-schema.html" . }}
+    <title>{{- block "title" . -}}{{- end -}}</title>
+    <link rel="canonical" href="{{ .Permalink }}" />
+    {{ partial "css.html" . }}
+  </head>
 
-<head itemscope itemtype="{{ .Site.BaseURL }}">
-  {{- partial "meta.html" . -}}
-  {{ partial "site-schema.html" . }}
-  {{ template "_internal/google_analytics.html" . }}
-  <title>{{- block "title" . -}}{{- end -}}</title>
-  <link rel="canonical" href="{{ .Permalink }}" />
-  {{ partial "css.html" . }}
-</head>
+  <body>
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
 
-<body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div id="status"></div>
-  </div>
-
-  {{- block "main" . -}} {{- end -}} {{- partial "javascript.html" . -}}
-</body>
-
+    {{- block "main" . -}} {{- end -}} {{- partial "javascript.html" . -}}
+  </body>
 </html>
